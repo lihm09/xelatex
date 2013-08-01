@@ -1,0 +1,342 @@
+%!Tex Program = xelatex
+\documentclass[a4paper,11pt]{article}
+\usepackage{xeCJK}
+\usepackage{latexsym}
+\usepackage{amsmath}                 % AMS LaTeX宏包
+\usepackage{amssymb}                 % 用来排版漂亮的数学公式
+\usepackage{amsbsy}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}                % 英文花体字体
+\usepackage{bm}                      % 数学公式中的黑斜体
+\usepackage{relsize}                 % 调整公式字体大小：\mathsmaller, \mathlarger
+%\usepackage{ccmap}                   % 使pdfLatex生成的文件支持复制等
+\usepackage{graphicx}                % 用于图像
+\usepackage{caption}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%以下是版面控制部分%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{geometry}\geometry{left=2.75cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+\usepackage{indentfirst}             % 首行缩进
+\usepackage[perpage,symbol]{footmisc}% 脚注控制
+\usepackage[sf]{titlesec}            % 控制标题
+\usepackage{titletoc}                % 控制目录
+\titlecontents{section}[0pt]{\addvspace{2pt}\filright}
+              {\contentspush{\thecontentslabel\ }}
+              {}{\titlerule*[8pt]{.}\contentspage}
+                                     % 添加section在目录里的点号
+\usepackage{setspace}                % 调节行间距   
+\usepackage{booktabs}                % 用于表格中加下划线
+\usepackage{fancyhdr}                % 页眉页脚
+\usepackage{type1cm}                 % 控制字体大小
+\usepackage{makeidx}                 % 建立索引
+\usepackage{textcomp}                % 千分号等特殊符号
+\usepackage{layouts}                 % 打印当前页面格式
+\usepackage{bbding}                  % 一些特殊符号
+\usepackage{cite}                    % 支持引用
+\setlength{\skip\footins}{0.5cm}     % 脚注与正文的距离
+\usepackage{listings}                % 插入代码
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%以上是版面控制部分%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%以下为中英文字体设置%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{times}
+\usepackage{fontspec,xunicode,xltxtra} % XeLaTeX相关字体字库
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
+\newfontfamily\youyuan{WenQuanYi Micro Hei}
+\newfontfamily\hwcaiyun{WenQuanYi Micro Hei}
+\newfontfamily\hwhupo{WenQuanYi Micro Hei}
+\newfontfamily\yaoti{WenQuanYi Micro Hei}
+\newfontfamily\kaiti{Adobe Kaiti Std}
+\newfontfamily\xsong{WenQuanYi Micro Hei}
+\newfontfamily\hwsong{WenQuanYi Micro Hei}
+\newfontfamily\yahei{WenQuanYi Micro Hei}
+\newfontfamily\fangsong{Adobe Fangsong Std}
+\newfontfamily\song{Adobe Fangsong Std}
+\newfontfamily\hwfangsong{WenQuanYi Micro Hei}
+\newfontfamily\weiti{WenQuanYi Micro Hei}
+\newfontfamily\heiti{Adobe Heiti Std}
+\newfontfamily\hei{WenQuanYi Zen Hei}
+\newfontfamily\hwxingkai{WenQuanYi Micro Hei}
+\newfontfamily\hwlishu{WenQuanYi Micro Hei}
+\newfontfamily\zhongsong{WenQuanYi Micro Hei}
+\newfontfamily\shuti{WenQuanYi Micro Hei}
+\newfontfamily\hwhei{WenQuanYi Micro Hei}
+\newfontfamily\lishu{WenQuanYi Micro Hei}
+\newfontfamily\hwkai{WenQuanYi Micro Hei}
+\newfontfamily\tnroman{Times New Roman}
+\newcommand{\sanhao}{\fontsize{16pt}{24pt}\selectfont}      % 三号, 1.5倍行距
+\newcommand{\sihao}{\fontsize{14pt}{21pt}\selectfont}       % 四号, 1.5倍行距
+\newcommand{\xiaosi}{\fontsize{12pt}{18pt}\selectfont}      % 小四, 1.5倍行距
+\newcommand{\wuhao}{\fontsize{10.5pt}{10.5pt}\selectfont}   % 五号, 单倍行距
+\setCJKmainfont{WenQuanYi Micro Hei}   % 设置默认中文字体
+\setCJKmonofont{WenQuanYi Micro Hei}   % 设置等宽字体
+\setmainfont{Times New Roman} %设置默认英文字体。
+%%%%%%%%%%%%%%%%%%%%%%%%%以上为中英文字体设置%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%以下是一些命令或环境的重定义或自定义%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{theorem}{定理}
+\newtheorem{definition}{定义}
+\newtheorem{property}{问题}
+\newtheorem{proposition}{猜测}
+\newtheorem{lemma}{引理}
+\newtheorem{corollary}{推论}
+\renewcommand{\proofname}{证明}
+\renewcommand{\contentsname}{\center\hei{\sanhao{目录}}}
+\renewcommand{\refname}{\textbf{\xiaosi{\song{参考文献}}}}      % 将References改为参考文献
+
+\newenvironment{chabstract}{{\hei{\xiaosi{摘要：}}}}            %定义中文摘要
+
+\newenvironment{enabstract}{{\bfseries{\xiaosi\tnroman{Abstract:}}}}         %定义英文摘要
+
+\newenvironment{chkeyword}{{\hei{\xiaosi{关键词：}}}}           %定义中文关键词
+
+\newenvironment{enkeyword}{{\bfseries{\xiaosi\tnroman{Key words:}}}}         %定义英文关键词
+
+\newcommand{\ud}{\mathrm{d}}                                    %用\ud 作为微分算子“d”
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%以上是一些命令或环境的重定义或自定义%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%以下进入首页标题页%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\title{\hei{\sanhao{测量光纤不对称性系数alpha的方法}}}
+\author{\xiaosi{lihm}}
+\date{\today}
+\sanhao{\maketitle}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%以上是首页标题页%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%以下为论文引言部分%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\wuhao{利用统计方法，通过多次测量、线性拟合得到较为精确的光纤不对称系数alpha的值。该实验主从两端均为cute\_wr, 可以认为是对称的，即 $\Delta_{Tx_M} = \Delta_{Tx_S},\Delta_{Rx_M} = \Delta_{Rx_S}$。}
+\\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%以下为论文第一部分%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\sihao{方法原理}}
+在White Rabbit中，从端通过收发包的时间戳及数据库中固定延时、不对称系数等值计算出主从两端时钟在绝对时间轴（在与两者都保持相对静止的系中）上的偏差，以此来补偿主从的时钟差，其计算公式如下\\
+$$ offset_{MS} = t_1 - t_{2p} + delay_{MS}  
+   		   = t_1 - t_{2p} + \frac{1+\alpha}{2+\alpha}(delay_{MM} - \Delta ) + \Delta_{Tx} + \Delta_{Rx} + \varepsilon_S \\ $$
+
+在实验时，如果sfp数据库中写入$\Delta_{Tx}=0,\alpha=0$,此时从端会以这两个值为条件算出$offset_{MS_{test}}$,并作为时钟的补偿值。\\
+$$offset_{MS_{test}} = t_1 - t_{2p} + \frac{1}{2}(delay_{MM}-\varepsilon_M-\varepsilon_S)+ \varepsilon_S$$
+
+将主从两端的pps同时接入示波器中，测得的pps的偏差即为$corr = offset_{MS_{true}} - offset_{MS_{test}}$
+$$offset_{MS_{true}} = t_1 - t_{2p} + \frac{1+\alpha}{2+\alpha}(delay_{MM}- \Delta-\varepsilon_M-\varepsilon_S)+ \Delta_{Tx} + \Delta_{Rx} + \varepsilon_S $$
+$$corr = \frac{1+\alpha}{2+\alpha}(delay_{MM}- \Delta-\varepsilon_M-\varepsilon_S)+ \Delta_{Tx} + \Delta_{Rx} -\frac{1}{2}(delay_{MM}-\varepsilon_M-\varepsilon_S) $$
+令$delay_{mm}^{'} = delay_{MM}-\varepsilon_M-\varepsilon_S$,
+则$corr = \frac{\alpha}{2(\alpha+2)}(delay_{mm}^{'} - 2(\Delta_{Tx} + \Delta_{Rx}))$\\
+若测得多组$delay_{mm}^{'}$和corr值，并以$delay_{mm}^{'}$为自变量，corr为因变量作线性拟合，即可得到$\alpha$ 值。但是由于物理上$delay_{mm}^{'}$不可能为0，因而所做的曲线外推并不能得到正确的$(\Delta_{Tx} + \Delta_{Rx})$的值。
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%以下为论文第二部分%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\sihao{测试结果}}
+{\subsection{\xiaosi{实验数据}}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline %绘制一条水平的线
+           & corr &       sdev &    delaymm &       bitM &       bitS &   delaymm' \\
+\hline %绘制一条水平的线
+       6km &       3665 &      24.28 &   59625011 &       1600 &       3200 &   59620211 \\
+
+           &       3722 &      25.57 &   59627421 &        800 &       6400 &   59620221 \\
+
+           &       3794 &      22.62 &   59625827 &          0 &       5600 &   59620227 \\
+
+           &       3856 &      24.14 &   59623437 &       3200 &          0 &   59620237 \\
+
+           &       3802 &      22.72 &   59626648 &       3200 &       3200 &   59620248 \\
+
+           &       3764 &      22.04 &   59630010 &       6400 &       3200 &   59620410 \\
+
+           &       3848 &      22.02 &   59625210 &       2400 &       2400 &   59620410 \\
+
+           &       3763 &      26.12 &   59634015 &       6400 &       7200 &   59620415 \\
+
+           &       3760 &      21.72 &   59626004 &       4000 &       1600 &   59620404 \\
+
+           &       3792 &      23.76 &   59630014 &       4000 &       5600 &   59620414 \\
+\hline %绘制一条水平的线
+   average &     3776.6 &            &            &            &            &   59620320 \\
+\hline %绘制一条水平的线
+       5km &       3254 &      21.77 &   49807463 &       2400 &       7200 &   49797863 \\
+
+           &       3242 &      26.24 &   49801805 &       4000 &          0 &   49797805 \\
+
+           &       3168 &       26.2 &   49806638 &       2400 &       6400 &   49797838 \\
+
+           &       3181 &      20.95 &   49805027 &       4800 &       2400 &   49797827 \\
+
+           &       3203 &      20.03 &   49808233 &       4800 &       5600 &   49797833 \\
+
+           &       3181 &      21.93 &   49804204 &       6400 &          0 &   49797804 \\
+
+           &       3264 &      25.74 &   49800223 &       2400 &          0 &   49797823 \\
+
+           &       3177 &      24.44 &   49803431 &          0 &       5600 &   49797831 \\
+
+           &       3189 &      19.91 &   49801828 &          0 &       4000 &   49797828 \\
+
+           &       3257 &       22.4 &   49801057 &       1600 &       1600 &   49797857 \\
+\hline %绘制一条水平的线
+   average &     3211.6 &            &            &            &            &   49797831 \\
+\hline %绘制一条水平的线
+       4km &       2607 &      24.26 &   39980982 &       2400 &       4800 &   39973782 \\
+
+           &       2661 &       24.8 &   39980138 &       6400 &          0 &   39973738 \\
+
+           &       2708 &      21.33 &   39983377 &       5600 &       4000 &   39973777 \\
+
+           &       2593 &      24.45 &   39980138 &       4000 &       2400 &   39973738 \\
+
+           &       2675 &      23.99 &   39981775 &       1600 &       6400 &   39973775 \\
+
+           &       2658 &      20.01 &   39980266 &       1600 &       4800 &   39973866 \\
+
+           &       2689 &      23.21 &   39981037 &       7200 &          0 &   39973837 \\
+
+           &       2677 &      22.13 &   39981843 &       7200 &        800 &   39973843 \\
+
+           &       2618 &      24.44 &   39980280 &       2400 &       4000 &   39973880 \\
+
+           &       2689 &      25.62 &   39978664 &       4000 &        800 &   39973864 \\
+\hline %绘制一条水平的线
+   average &     2657.5 &            &            &            &            &   39973810 \\
+\hline %绘制一条水平的线
+       3km &       2066 &      22.67 &   30159899 &       6400 &       1600 &   30151899 \\
+
+           &       2076 &      21.11 &   30160654 &       5600 &       3200 &   30151854 \\
+
+           &       2006 &      21.51 &   30163063 &       5600 &       5600 &   30151863 \\
+
+           &       2003 &      22.18 &   30162288 &       3200 &       7200 &   30151888 \\
+
+           &       2111 &      26.82 &   30164695 &       7200 &       5600 &   30151895 \\
+
+           &       2058 &      22.51 &   30156675 &       4800 &          0 &   30151875 \\
+
+           &       2004 &      20.42 &   30155061 &          0 &       3200 &   30151861 \\
+
+           &       2026 &      20.24 &   30153489 &          0 &       1600 &   30151889 \\
+
+           &       2067 &      23.51 &   30154323 &        800 &       1600 &   30151923 \\
+
+           &       2076 &      24.03 &   30155896 &       2400 &       1600 &   30151896 \\
+\hline %绘制一条水平的线
+   average &     2049.3 &            &            &            &            &   30151884 \\
+\hline %绘制一条水平的线
+       2km &       1380 &      21.74 &   20332379 &       1600 &        800 &   20329979 \\
+
+           &       1369 &      24.12 &   20337956 &       2400 &       5600 &   20329956 \\
+
+           &       1468 &      23.21 &   20335562 &       2400 &       3200 &   20329962 \\
+
+           &       1449 &      22.02 &   20333177 &       1600 &       1600 &   20329977 \\
+
+           &       1454 &      24.55 &   20340368 &       6400 &       4000 &   20329968 \\
+
+           &       1368 &      23.24 &   20335625 &       1600 &       4000 &   20330025 \\
+
+           &       1387 &      23.68 &   20334007 &          0 &       4000 &   20330007 \\
+
+           &       1392 &      22.72 &   20331612 &          0 &       1600 &   20330012 \\
+
+           &       1460 &      23.76 &   20343595 &       7200 &       6400 &   20329995 \\
+
+           &       1357 &      22.55 &   20332405 &          0 &       2400 &   20330005 \\
+\hline %绘制一条水平的线
+   average &     1408.4 &            &            &            &            &   20329989 \\
+\hline %绘制一条水平的线
+\end{tabular} 
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline %绘制一条水平的线
+ &        732 &      20.45 &   10520221 &       4000 &       6400 &   10509821 \\
+
+           &        746 &      24.13 &   10517838 &       1600 &       6400 &   10509838 \\
+
+           &        712 &      22.38 &   10511394 &        800 &        800 &   10509794 \\
+
+           &        742 &      26.42 &   10515404 &       4000 &       1600 &   10509804 \\
+
+ 1km       &        732 &      21.37 &   10515403 &        800 &       4800 &   10509803 \\
+
+           &        749 &      18.69 &   10513789 &       3200 &        800 &   10509789 \\
+
+           &        750 &       19.9 &   10519410 &       5600 &       4000 &   10509810 \\
+
+           &        805 &      20.26 &   10514610 &       2400 &       2400 &   10509810 \\
+
+           &        751 &      22.00 &   10523418 &       7200 &       6400 &   10509818 \\
+
+           &        749 &      19.75 &   10511430 &       1600 &          0 &   10509830 \\
+\hline %绘制一条水平的线
+   average &      746.8 &            &            &            &            &   10509812 \\
+\hline %绘制一条水平的线
+\end{tabular}
+
+\end{tabular}
+\end{center}
+
+\subsection{\xiaosi{数据处理及拟合结果}}}
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline %绘制一条水平的线
+            corr   &		delaymm' \\
+\hline %绘制一条水平的线
+            3776.6 &		59620320 \\
+\hline %绘制一条水平的线
+            3211.6 &		49797831 \\
+\hline %绘制一条水平的线
+            2657.5 &		39973810 \\
+\hline %绘制一条水平的线
+			2049.3 &		30151884 \\
+\hline %绘制一条水平的线
+			1408.4 &		20329989 \\
+\hline %绘制一条水平的线
+			746.8 &     10509812 \\
+\hline %绘制一条水平的线
+\end{tabular}
+\end{center}
+使用octave做线性拟合，得到结果为:
+$$corr = 6.1571 * 10^{-5} * delay_{mm}^{'} + 149.44 $$
+$$R = 0.99933 $$
+由此得到：
+$$\frac{\alpha}{2(\alpha+2)} = 6.1571 * 10^{-5}$$
+$$\alpha = 2.4631*10 ^ {-4} $$
+将$\alpha$值写入数据库中需要乘上$2^{38}$,即为67705177。
+
+\subsection{\xiaosi{结果验证}}}
+通过WR calibration文档中提到的方法，测得$\Delta_{Tx}=\Delta_{Rx}=164736$，将其和$\alpha$的值写入sfp数据库中。
+\begin{center}
+sfp  add  AXGE-1254-0531  164736 164736 67705177 \newline
+sfp  add  AXGE-3454-0531  164736 164736 -67705177 \newline
+\end{center}
+然后在不同长度、多次重复上电测量主从端pps的延时，得到以下结果：
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline %绘制一条水平的线
+            length(km)   &1  &2 &3 &4 &5 &6\\
+\hline %绘制一条水平的线
+		skew(ps)&222.2	&223.7	&281.7	&236.2	&223.8	&141.7\\
+				&142		&153.5	&255.3	&166.3	&243.1	&222.4\\
+				&143.2	&160.7	&191.2	&227.1	&145.1	&221.3\\
+				&141.3	&170		&182		&239.4	&156.8	&153.3\\
+				&211		&149.9	&200		&168.3	&214.5	&224.5\\
+\hline %绘制一条水平的线
+		average	&171.94 &171.56 &222.04 &207.46 &196.66 &192.64\\
+\hline %绘制一条水平的线
+\end{tabular}
+\end{center}
+由表格中的数据可以看出，对于不同公里数，主从端的延时基本没有发生变化，其差异很大部分可归因于反复上电带来的偏差。
+
+\end{document}
